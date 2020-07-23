@@ -1,4 +1,3 @@
-
 declare module 'vscode-web-custom-data/data/browsers.css-data.json' {
 
   export interface IPropertyValue {

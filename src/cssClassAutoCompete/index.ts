@@ -1,13 +1,13 @@
+import { ExtensionContext, languages, workspace } from 'coc.nvim';
 import fs from 'fs';
 import path from 'path';
-import { ExtensionContext, languages, workspace } from 'coc.nvim';
 import {
-  Position,
-  TextDocument,
   CompletionItem,
   CompletionItemKind,
+  Position,
+  TextDocument,
 } from 'vscode-languageserver-protocol';
-import { getWords, getCurrentDirFromDocument } from '../util';
+import { getCurrentDirFromDocument, getWords } from '../util';
 
 function unique(arr: string[]) {
   return Array.from(new Set(arr));
@@ -44,7 +44,6 @@ async function provideCompletionItems(
   return unique(classNames).map(className => {
     return {
       label: className,
-      insertText: `${className}`,
       kind: CompletionItemKind.Text,
     };
   });

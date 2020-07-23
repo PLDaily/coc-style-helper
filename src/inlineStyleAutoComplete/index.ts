@@ -1,16 +1,16 @@
 import { ExtensionContext, languages, workspace } from 'coc.nvim';
 import {
-  Position,
-  TextDocument,
   CompletionItem,
   CompletionItemKind,
+  Position,
+  TextDocument,
 } from 'vscode-languageserver-protocol';
 import CSSData, {
   IProperty,
   IPropertyValue,
 } from 'vscode-web-custom-data/data/browsers.css-data.json';
-import isEditStyleKey from './isEditStyleKey';
 import { getWords } from '../util';
+import isEditStyleKey from './isEditStyleKey';
 
 const CSS_PROPERTIES = {};
 // {
@@ -88,8 +88,8 @@ async function provideCompletionItems(
           label: propertyName,
           detail: property.description,
           insertText: `${propertyName}: `, // EXP position:
-          documentation: `**Coc Style Helper** \n${CSS_DOCS_URL}/${property.name}`, // Docs
-          kind: CompletionItemKind.Value,
+          documentation: `Coc Style Helper \n${CSS_DOCS_URL}/${property.name}`, // Docs
+          kind: CompletionItemKind.Property,
         });
       }
     });
@@ -109,7 +109,8 @@ async function provideCompletionItems(
             insertText: `'${value.name}'${
               !isEndsWithComma(currentText) ? ',' : ''
             }`,
-            documentation: `**Coc Style Helper** \n${CSS_DOCS_URL}/${property.name}#Values`, // Docs
+            documentation: `Coc Style Helper \n${CSS_DOCS_URL}/${property.name}#Values`, // Docs
+            kind: CompletionItemKind.Value,
           });
         }
       });
@@ -135,7 +136,6 @@ export default function inlineStyleAutoComplete(
       'stylehelper',
       mode.map(x => x.language),
       { provideCompletionItems },
-      ['.'],
     ),
   );
 }

@@ -13,8 +13,6 @@ export default async function isEditStyleKey(word: string, line: number) {
   if (!document) return false;
   const currentLineText = await workspace.getLine(document.uri, line);
   const previousLineText = await workspace.getLine(document.uri, line - 1);
-  workspace.showMessage(`currentLineText: ${currentLineText}`);
-  workspace.showMessage(`previousLineText: ${previousLineText}`);
 
   if (
     // EXP: marginLeft, margin-left

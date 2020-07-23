@@ -1,20 +1,20 @@
-import { ExtensionContext, Uri, languages, workspace } from 'coc.nvim';
+import { ExtensionContext, languages, Uri, workspace } from 'coc.nvim';
 import {
-  Position,
-  TextDocument,
   CompletionItemKind,
   Location,
-  Range,
   MarkupKind,
+  Position,
+  Range,
+  TextDocument,
 } from 'vscode-languageserver-protocol';
+import {
+  getCurrentDirFromDocument,
+  getCurrentFileNameFromDocument,
+  getCurrentWords,
+} from '../util';
 import { findStyle, IStylePosition } from './findStyle';
 import { findStyleDependencies } from './findStyleDependencies';
 import findStyleSelectors from './findStyleSelectors';
-import {
-  getWords,
-  getCurrentDirFromDocument,
-  getCurrentFileNameFromDocument,
-} from '../util';
 
 const SUPPORT_LANGUAGES = [
   'javascript',
@@ -32,7 +32,8 @@ async function provideDefinition(document: TextDocument, position: Position) {
 
   if (!/style|className/g.test(currentText)) return;
 
-  const word = getWords(currentText, position);
+  const word = getCurrentWords(document, position);
+  if (!word) return;
 
   const matched = findStyle(directory, word, findStyleDependencies(fileName));
   if (matched) {
@@ -61,9 +62,11 @@ async function provideHover(document: TextDocument, position: Position) {
 
   if (!/style|className/g.test(currentText)) return;
 
-  const word = getWords(currentText, position);
+  const word = getCurrentWords(document, position);
+  if (!word) return;
 
   const matched = findStyle(directory, word, findStyleDependencies(fileName));
+
   if (matched) {
     // Markdown css code
     return {

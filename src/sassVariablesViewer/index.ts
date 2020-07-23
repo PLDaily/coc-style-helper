@@ -2,12 +2,12 @@ import { ExtensionContext, languages, Uri, workspace } from 'coc.nvim';
 import * as fs from 'fs';
 import * as path from 'path';
 import {
+  CompletionItemKind,
   Location,
   MarkupKind,
   Position,
   Range,
   TextDocument,
-  CompletionItemKind,
 } from 'vscode-languageserver-protocol';
 import { getCurrentFileNameFromDocument, getCurrentWords } from '../util';
 import findVariables, { IVariables } from './findVariables';
@@ -151,4 +151,3 @@ export default function sassVariablesViewer(context: ExtensionContext): void {
     ),
   );
 }
-

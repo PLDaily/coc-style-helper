@@ -1,6 +1,6 @@
 {
   "name": "coc-style-helper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "style helper extension for coc.nvim",
   "author": "PLDaily <pcd12321@gmail.com>",
   "license": "MIT",

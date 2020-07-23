@@ -8,7 +8,7 @@ Write styles easier in JSX, provide a powerful auxiliary development functions i
 
 ## Features
 
-### JSX inline style antomatic completion
+### JSX inline style automatic completion
 
 <img src="https://raw.githubusercontent.com/PLDaily/coc-style-helper/master/images/jsx-style-automatic-completion.gif" alt="jsx-style-automatic-completion.gif">
 
@@ -24,11 +24,11 @@ Write styles easier in JSX, provide a powerful auxiliary development functions i
 
 <img src="https://raw.githubusercontent.com/PLDaily/coc-style-helper/master/images/jsx-classname-value-preview-and-define-jump.gif" alt="jsx-classname-value-preview-and-define-jump.gif">
 
-### css classname automatic completion
+### Css classname automatic completion
 
 <img src="https://raw.githubusercontent.com/PLDaily/coc-style-helper/master/images/css-classname-automatic-classname.gif" alt="css-classname-automatic-classname.gif">
 
-### sass automatic completion
+### Scss/Sass automatic completion
 
 <img src="https://raw.githubusercontent.com/PLDaily/coc-style-helper/master/images/sass-automatic-completion.gif" alt="sass-automatic-completion.gif">
 
